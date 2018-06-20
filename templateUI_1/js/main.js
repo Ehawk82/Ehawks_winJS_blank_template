@@ -6,7 +6,11 @@
 
 	var app = WinJS.Application;
 	var activation = Windows.ApplicationModel.Activation;
-	var isFirstActivation = true;
+    var isFirstActivation = true;
+
+    var ViewManagement = Windows.UI.ViewManagement;
+    var ApplicationViewWindowingMode = ViewManagement.ApplicationViewWindowingMode;
+    var ApplicationView = ViewManagement.ApplicationView;
 
 	app.onactivated = function (args) {
 		if (args.detail.kind === activation.ActivationKind.voiceCommand) {
@@ -33,12 +37,14 @@
 			// Any long-running operations (like expensive network or disk I/O) or changes to user state which occur at launch
 			// should be done here (to avoid doing them in the prelaunch case).
 			// Alternatively, this work can be done in a resume or visibilitychanged handler.
+            myUI.init();
 		}
 
 		if (isFirstActivation) {
 			// TODO: The app was activated and had not been running. Do general startup initialization here.
 			document.addEventListener("visibilitychange", onVisibilityChanged);
-			args.setPromise(WinJS.UI.processAll());
+            args.setPromise(WinJS.UI.processAll());
+            ApplicationView.preferredLaunchWindowingMode = ApplicationViewWindowingMode.fullScreen;
 		}
 
 		isFirstActivation = false;
@@ -55,7 +61,14 @@
 		// You might use the WinJS.Application.sessionState object, which is automatically saved and restored across suspension.
 		// If you need to complete an asynchronous operation before your application is suspended, call args.setPromise().
 	};
+    var myUI;
+
+    myUI = {
+        init: () => {
+            console.log("log");
+        }
+    };
 
 	app.start();
-
+    
 })();
