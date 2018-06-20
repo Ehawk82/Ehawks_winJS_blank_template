@@ -11,13 +11,21 @@ ________________
 ________________
 
 # Design
+    -flat design: black/grey/lightgrey/darkgrey/white, no colors
+    -responsive to sense protrait & landscape orientations
+    -no layout selected yet
 ________________
 
 # Navigation
+    -not created
 ________________
 
 # Settings
+    -audio controls expected to be divided in to three categories: main, ambient, music
+    -might have a spot to lock/unlock an autosave feature(not commited)
 ________________
 
 # Credits
+    -Ehawk
+    -any future designers yet to be named
 ________________
