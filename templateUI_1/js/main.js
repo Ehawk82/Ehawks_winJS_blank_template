@@ -37,14 +37,15 @@
 			// Any long-running operations (like expensive network or disk I/O) or changes to user state which occur at launch
 			// should be done here (to avoid doing them in the prelaunch case).
 			// Alternatively, this work can be done in a resume or visibilitychanged handler.
-            myUI.init();
+            myUI.preloader();
 		}
 
 		if (isFirstActivation) {
 			// TODO: The app was activated and had not been running. Do general startup initialization here.
 			document.addEventListener("visibilitychange", onVisibilityChanged);
             args.setPromise(WinJS.UI.processAll());
-            ApplicationView.preferredLaunchWindowingMode = ApplicationViewWindowingMode.fullScreen;
+            //ApplicationView.preferredLaunchWindowingMode = ApplicationViewWindowingMode.fullScreen;
+            myUI.init();
 		}
 
 		isFirstActivation = false;
@@ -64,9 +65,88 @@
     var myUI;
 
     myUI = {
+        //return functions
+        byTag: (x, y) => { return document.getElementsByTagName(x)[y] },
+        bySel: (x) => { return document.querySelector(x) },
+        bySelAll: (x) => { return document.querySelectorAll(x) },
+        createEle: (x) => { return document.createElement(x) },
+
+        //global functions
+        preloader: () => {
+            //console.log("log preloader");
+        },
         init: () => {
-            console.log("log");
+            //console.log("log init");
+            myUI.myLoad();
+        },
+        myLoad: () => {
+            var header = myUI.createEle("header"),
+                menuHolder = myUI.createEle("div"),
+                startBtn = myUI.createEle("button"),
+                settBtn = myUI.createEle("button"),
+                helpBtn = myUI.createEle("button"),
+                creditsBtn = myUI.createEle("button");
+
+            header.innerHTML = "<h1>*TITLE*</h1>";
+
+            startBtn.innerHTML = "START";
+
+            settBtn.innerHTML = "SETTINGS";
+
+            helpBtn.innerHTML = "HELP";
+
+            creditsBtn.innerHTML = "CREDITS";
+            creditsBtn.onclick = myUI.creditsFunc(menuHolder);
+
+            menuHolder.className = "menuHolder";
+
+            menuHolder.appendChild(startBtn);
+            menuHolder.appendChild(settBtn);
+            menuHolder.appendChild(helpBtn);
+            menuHolder.appendChild(creditsBtn);
+
+            dvContain.appendChild(header);
+            dvContain.appendChild(menuHolder);
+            //console.log("log load");
+            setTimeout(() => {
+                menuHolder.className = "menuHolder_full";
+            }, 500);
+        },
+        creditsFunc: (menuHolder) => {
+            return () => {
+                menuHolder.className = "menuHolder";
+                setTimeout(() => {
+                    myUI.runCredits();
+                    menuHolder.remove();
+                }, 500);
+            }
+        },
+        runCredits: () => {
+            var crd = myUI.createEle("h2"),
+                crdTab = myUI.createEle("div"),
+                elems;
+
+            elems = "<p>Programming/Scripting: Ehawk</p>";
+            elems += "<p>Art: Ehawk</p>";
+            elems += "<p>Sound: Ehawk</p>";
+            elems += "<p>Development: Ehawk</p>";
+            elems += "<p>Music: N/A</p>";
+
+            crdTab.innerHTML = elems;
+            crdTab.className = "crdTab";
+
+            crd.innerHTML = "CREDITS";
+            crd.className = "crdTab";
+
+            dvContain.appendChild(crd);
+            dvContain.appendChild(crdTab);
+
+            setTimeout(() => {
+                crd.className = "crd_full";
+                crdTab.className = "crdTab_full";
+            }, 100);
         }
+        //data
     };
 
 	app.start();

@@ -1,9 +1,185 @@
-﻿html, body {
-    padding:0;
-    margin:0;
-    height:100%;
-    width:100%;
-}
-body {
+/****portrait mode****/
+@media (orientation: portrait) {
+    /*DOM*/
+    html, body {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+    }
 
+    body {
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-weight: 300;
+    }
+
+    header {
+        padding: 5px 0;
+        background: #414141;
+        text-indent: 0;
+        text-align: center;
+    }
+    /*CLASS*/
+    .menuHolder {
+        transition: 1s all;
+        background: #414141;
+        margin: 20% auto;
+        width: 90%;
+        padding: 10px 20px;
+    }
+        .menuHolder_full, .menuHolder {
+            transition: 1s all;
+            background: #414141;
+            margin: 20% auto;
+            width: 90%;
+            padding: 10px 20px;
+        }
+
+        .menuHolder_full button, .menuHolder button {
+            width: 100%;
+            border: none;
+            background: #777;
+            padding: 15px 0;
+            margin: 5px 0;
+        }
+
+            .menuHolder_full button:hover {
+                background: #999;
+            }
+
+            .menuHolder_full button:active {
+                background: #555;
+            }
+    .crd {
+        transition: 500ms all;
+
+        background: darkgrey;
+        left: -101%;
+        width: 100%;
+        text-align: left;
+    }
+
+    .crd_full {
+        transition: 500ms all;
+
+        background: darkgrey;
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .crdTab {
+        transition: 500ms all;
+
+        background: #000;
+
+        width: 70%;
+
+    }
+
+    .crdTab_full {
+        transition: 500ms all;
+
+        background: #000;
+
+        width: 99%;
+
+    }
+    /*ID*/
+
+    /*KEYFRAMES*/
+
+}
+
+@media (orientation: landscape) {
+    /*DOM*/
+    html, body {
+        
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    body {
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-weight: 600;
+    }
+
+    header {
+        padding: 5px 0;
+        background: #414141;
+        text-indent: 20px;
+        text-align: left;
+    }
+    /*CLASS*/
+    .menuHolder {
+        transition: 500ms all;
+        position:absolute;
+        background: #414141;
+        width: 30%;
+        top:10%;
+        left:-40%;
+        padding: 10px 20px;
+    }
+    .menuHolder_full {
+        transition: 500ms all;
+        position: absolute;
+        background: #414141;
+        top: 10%;
+        left: 33%;
+        width: 30%;
+        padding: 10px 20px;
+    }
+        .menuHolder_full button, .menuHolder button {
+            width: 100%;
+            border: none;
+            background: #777;
+            padding: 15px 0;
+            margin: 5px 0;
+        }
+
+    .menuHolder_full button:hover {
+        background: #999;
+    }
+    .menuHolder_full button:active {
+        background: #555;
+    }
+    .crd {
+        transition: 500ms all;
+        position: absolute;
+        background: darkgrey;
+        left: -101%;
+        width: 100%;
+        text-align:left;
+    }
+    .crd_full {
+        transition: 500ms all;
+        position: absolute;
+        background: darkgrey;
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
+    .crdTab {
+        transition: 500ms all;
+        position: absolute;
+        background: #000;
+        top: 15%;
+        left: -101%;
+        width: 100%;
+        text-align: left;
+    }
+
+    .crdTab_full {
+        transition: 500ms all;
+        position: absolute;
+        background: #000;
+        top:15%;
+        left: 15%;
+        width: 70%;
+        text-align: left;
+    }
+    /*ID*/
+    /*KEYFRAMES*/
 }
